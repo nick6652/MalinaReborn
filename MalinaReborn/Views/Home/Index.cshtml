@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="streams">
+    <input id="stream_url" type="text" />
+    <button id="play_stream">Play</button>
+    <button id="stop">Stop</button>
+    <button id="pause">Pause</button>
+</div>
+
+@section Scripts
+    {
+    <script>
+        $("#stop").click(function(event) {
+            $.post("@Url.Action("Stop", "OmxPlayer")");
+            $.post("@Url.Action("Stop", "Streamlink")");
+        });
+        $("#pause").click(function(event) {
+            $.post("@Url.Action("Pause", "OmxPlayer")");
+            $.post("@Url.Action("Pause", "Streamlink")");
+        });
+        $("#play_stream").click(function(event) {
+            $.post("@Url.Action("Play", "Streamlink")", { path: $("#stream_url").val() });
+        });
+    </script>
+}
