@@ -2,4 +2,4 @@
 
 Build:
 
-dotnet -o malina -r linux-arm -c Release
+dotnet build -o malina -r linux-arm -c Release
